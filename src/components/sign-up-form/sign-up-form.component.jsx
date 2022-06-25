@@ -62,7 +62,7 @@ const SignUpForm = () => {
           label="Display Name"
           inputOptions={{
             type: "text",
-            required: "true",
+            required: true,
             onChange: handleChange,
             name: "displayName",
             value: displayName,
@@ -73,7 +73,7 @@ const SignUpForm = () => {
           label="Email"
           inputOptions={{
             type: "email",
-            required: "true",
+            required: true,
             onChange: handleChange,
             name: "email",
             value: email,
@@ -84,7 +84,7 @@ const SignUpForm = () => {
           label="Password"
           inputOptions={{
             type: "password",
-            required: "true",
+            required: true,
             onChange: handleChange,
             name: "password",
             value: password,
@@ -95,7 +95,7 @@ const SignUpForm = () => {
           label="Confirm Password"
           inputOptions={{
             type: "password",
-            required: "true",
+            required: true,
             onChange: handleChange,
             name: "confirmPassword",
             value: confirmPassword,
