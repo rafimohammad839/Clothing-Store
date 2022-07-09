@@ -5,6 +5,7 @@ import { Routes, Route, Outlet } from "react-router-dom";
 import Navigation from "./routes/navigation/navigation.component";
 import Authentication from "./routes/authentication/authentication.component";
 import Shop from "./routes/shop/shop.component";
+import Checkout from "./routes/checkout/checkout.component";
 
 // const Shop = () => {
 //   return <h1>This is a Shop component</h1>;
@@ -16,6 +17,7 @@ const App = () => {
       <Route path="/" element={<Navigation />}>
         <Route index element={<Home />} />
         <Route path="shop" element={<Shop />} /> {/*/home/shop */}
+        <Route path="checkout" element={<Checkout />} />
         <Route path="auth" element={<Authentication />} />
       </Route>
     </Routes>
