@@ -1,11 +1,12 @@
 import { useState } from "react";
 import FormInput from "../form-input/form-input.component";
-import Button from "../button/button.component";
+import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component";
 import {
   signInWithGooglePopup,
-  signInAuthUserWithEmailAndPassword
+  signInAuthUserWithEmailAndPassword,
 } from "../../utils/firebase.utils";
-import "./sign-in-form.styles.scss";
+
+import {SignInContainer, ButtonsContainer} from"./sign-in-form.styles.jsx";
 
 const defaultFormFields = {
   email: "",
@@ -13,7 +14,6 @@ const defaultFormFields = {
 };
 
 const SignInForm = () => {
-  
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
 
@@ -32,13 +32,13 @@ const SignInForm = () => {
       resetFormFields();
     } catch (error) {
       switch (error.code) {
-        case 'auth/wrong-password':
-          alert('Incorrect Password!');
+        case "auth/wrong-password":
+          alert("Incorrect Password!");
           break;
-        case 'auth/user-not-found':
-          alert('Invalid email address!');
+        case "auth/user-not-found":
+          alert("Invalid email address!");
           break;
-        default: 
+        default:
           console.log(error);
       }
     }
@@ -50,7 +50,7 @@ const SignInForm = () => {
   };
 
   return (
-    <div className="sign-in-container">
+    <SignInContainer>
       <h2>Already have an account?</h2>
       <span>Sign in with your email and password</span>
       <form onSubmit={handleSubmit}>
@@ -75,14 +75,18 @@ const SignInForm = () => {
             value: password,
           }}
         />
-        <div className="buttons-container">
+        <ButtonsContainer>
           <Button type="submit">Sign In</Button>
-          <Button type="button" buttonType="google" onClick={SignInWithGooglePopup}>
-            Sign In
+          <Button
+            type="button"
+            buttonType={BUTTON_TYPE_CLASSES.google}
+            onClick={SignInWithGooglePopup}
+          >
+            Google Sign In
           </Button>
-        </div>
+        </ButtonsContainer>
       </form>
-    </div>
+    </SignInContainer>
   );
 };
 
